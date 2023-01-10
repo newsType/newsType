@@ -1,9 +1,12 @@
+import path from 'path';
+
 module.exports = {
   entry: {
     dev: './src/index.tsx',
   },
   output: {
-    filename: './build/index.js',
+    path: path.join(__dirname, 'scripts'),
+    filename: 'bundle.js',
   },
   devtool: 'source-map',
   resolve: {
@@ -14,5 +17,11 @@ module.exports = {
       // Typescript
       { test: /\.tsx?$/, loader: 'ts-loader' },
     ],
+  },
+  node: {
+    console: 'true',
+    fs: 'empty',
+    net: 'empty',
+    tls: 'empty',
   },
 };
