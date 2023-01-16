@@ -4,12 +4,14 @@ import axios from 'axios';
 
 const Detail = () => {
   const [foodData, setFoodData] = useState<any | {}>({});
+  const ingridient: string = 'ㅇㅇㅇ';
+  const ing_array: string[] = ingridient.split(', ');
   axios
     .get(
       'http://openapi.foodsafetykorea.go.kr/api/35d0feeafab04c27beb4/COOKRCP01/json/1/5',
     )
     .then((res) => {
-      setFoodData(res.data.COOKRCP01);
+      setFoodData(res.data.COOKRCP01.row[0]);
       console.log(foodData);
     });
   const newArr = foodData;
