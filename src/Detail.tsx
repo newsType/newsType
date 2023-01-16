@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './index.css';
+import axios from 'axios';
 
 const Detail = () => {
+  const [foodData, setFoodData] = useState<any | {}>({});
+  axios
+    .get(
+      'http://openapi.foodsafetykorea.go.kr/api/35d0feeafab04c27beb4/COOKRCP01/json/1/5',
+    )
+    .then((res) => {
+      setFoodData(res.data.COOKRCP01);
+      console.log(foodData);
+    });
+  const newArr = foodData;
+  // console.log(newArr);
   return (
     <div className="bg-slate-200 pb-9">
-      <div className=" h-16 w-full bg-blue-600 py-4 px-52 font-bold text-xl text-white">
-        Recipe Bank
-      </div>
       <div className=" w-4/6 mx-auto bg-white rounded-3xl">
         <div className="w-full">
           <img
@@ -14,7 +23,9 @@ const Detail = () => {
             className="mx-auto mt-10 rounded-3xl"
           ></img>
         </div>
-        <div className="pt-10 pb-6 font-bold text-xl pl-7">타코야끼</div>
+        <div className="pt-10 pb-6 font-bold text-xl pl-7">
+          {foodData ? foodData.RCP_NM : null}
+        </div>
         <div className="flex flex-row flex-wrap py-3 pl-3 bg-white rounded-3xl">
           <img
             src="http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00028_1.png"
@@ -42,7 +53,7 @@ const Detail = () => {
           </div>
         </div>
         {/* 여기는 재료 */}
-        {/* <div className="w-full mx-auto h-auto bg-white font-bold text-xl flex flex-col relative p-5 rounded-br-3xl rounded-bl-3xl">
+        <div className="w-full mx-auto h-auto bg-white font-bold text-xl flex flex-col relative p-5 rounded-br-3xl rounded-bl-3xl">
           <div className="font-semibold text-lg pb-6">기본 재료</div>
           <div className="font-medium text-sm flex flex-col">
             <div className="py-2">칵테일새우 20g(5마리)</div>
@@ -56,10 +67,10 @@ const Detail = () => {
             <div className="py-2">고명</div>
             <div className="py-2">시금치 10g(3줄기)</div>
           </div>
-        </div> */}
+        </div>
 
         {/* 여기는 조리방법 */}
-        <div className="w-full mx-auto h-auto bg-white font-bold text-xl flex flex-col relative p-5 rounded-br-3xl rounded-bl-3xl">
+        {/* <div className="w-full mx-auto h-auto bg-white font-bold text-xl flex flex-col relative p-5 rounded-br-3xl rounded-bl-3xl">
           <div className="font-semibold text-lg pb-6">조리법</div>
           <div className="font-medium text-sm flex flex-col">
             <div className="pb-12">
@@ -92,7 +103,7 @@ const Detail = () => {
               />
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
