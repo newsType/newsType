@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import './index.css';
-import axios from 'axios';
 import { useGetPokemonByNameQuery } from './components/Api/recipeApi';
 
 const Detail = () => {
-  const [foodData, setFoodData] = useState<any | {}>({});
+  const [foodData, setFoodData] = useState();
   const { data, error, isLoading } = useGetPokemonByNameQuery();
   const [foodimg, setFoodImg] = useState([]);
-  const imgArray: string[] = [
+  const imgArray = [
     'MANUAL_IMG01',
     'MANUAL_IMG02',
     'MANUAL_IMG03',
@@ -46,7 +45,7 @@ const Detail = () => {
           {foodData ? foodData.RCP_NM : null}
         </div>
         <div className="flex flex-row flex-wrap py-3 pl-3 bg-white rounded-3xl">
-          {imgArray.map((value, key) => (
+          {/* {imgArray.map((value, key) => (
             <>
               <>{foodData.MANUAL_IMG + { value }}</>
               <img
@@ -55,7 +54,7 @@ const Detail = () => {
                 key={key}
               />
             </>
-          ))}
+          ))} */}
         </div>
       </div>
       <div className="mt-12 w-4/6 mx-auto h-auto bg-slate-100 font-bold text-xl rounded-3xl flex flex-col">
