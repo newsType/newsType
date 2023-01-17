@@ -30,10 +30,20 @@ const Detail = () => {
   ];
 
   useEffect(() => {
-    console.log(data);
+    setFoodData(data.COOKRCP01.row[0]);
+    console.log(foodData);
   }, []);
+
+  if (error) {
+    return <>error</>;
+  }
+  if (isLoading) {
+    return <>isLoding</>;
+  }
+
   return (
     <div className="bg-slate-200 pb-9">
+      {foodData.MANUAL_IMG02}
       <div className=" w-4/6 mx-auto bg-white rounded-3xl">
         <div className="w-full">
           <img
@@ -45,16 +55,11 @@ const Detail = () => {
           {foodData ? foodData.RCP_NM : null}
         </div>
         <div className="flex flex-row flex-wrap py-3 pl-3 bg-white rounded-3xl">
-          {/* {imgArray.map((value, key) => (
-            <>
-              <>{foodData.MANUAL_IMG + { value }}</>
-              <img
-                src={foodData.MANUAL_IMG + { value }}
-                className=" w-36 mx-4 h-auto my-3"
-                key={key}
-              />
-            </>
-          ))} */}
+          <img
+            src={foodData.MANUAL_IMG01}
+            className=" w-36 mx-4 h-auto my-3"
+            key={key}
+          />
         </div>
       </div>
       <div className="mt-12 w-4/6 mx-auto h-auto bg-slate-100 font-bold text-xl rounded-3xl flex flex-col">
