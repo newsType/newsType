@@ -8,7 +8,7 @@ export const recipeApi = createApi({
       'http://openapi.foodsafetykorea.go.kr/api/c9584cfd85c442aebc58/COOKRCP01/json/0/5',
   }),
   endpoints: (builder) => ({
-    getPokemonByName: builder.query({
+    getPokemonByName: builder.query<string, void>({
       query: () => `/`,
     }),
   }),

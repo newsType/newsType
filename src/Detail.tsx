@@ -5,7 +5,7 @@ import { useGetPokemonByNameQuery } from './components/Api/recipeApi';
 
 const Detail = () => {
   const [foodData, setFoodData] = useState<any | {}>({});
-  const { data, error, isLoading } = useGetPokemonByNameQuery('');
+  const { data, error, isLoading } = useGetPokemonByNameQuery();
   const [foodimg, setFoodImg] = useState([]);
   const imgArray: string[] = [
     'MANUAL_IMG01',
