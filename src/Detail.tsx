@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import './index.css';
 import axios from 'axios';
+import { useGetPokemonByNameQuery } from './components/Api/recipeApi';
 
 const Detail = () => {
   const [foodData, setFoodData] = useState<any | {}>({});
-
+  const { data, error, isLoading } = useGetPokemonByNameQuery('');
+  const [foodimg, setFoodImg] = useState([]);
   const imgArray: string[] = [
     'MANUAL_IMG01',
     'MANUAL_IMG02',
@@ -29,14 +31,7 @@ const Detail = () => {
   ];
 
   useEffect(() => {
-    axios
-      .get(
-        'http://openapi.foodsafetykorea.go.kr/api/35d0feeafab04c27beb4/COOKRCP01/json/1/1',
-      )
-      .then((res) => {
-        setFoodData(res.data.COOKRCP01.row[0]);
-        console.log(res.data.COOKRCP01.row[0]);
-      });
+    console.log(data);
   }, []);
   return (
     <div className="bg-slate-200 pb-9">
@@ -51,15 +46,16 @@ const Detail = () => {
           {foodData ? foodData.RCP_NM : null}
         </div>
         <div className="flex flex-row flex-wrap py-3 pl-3 bg-white rounded-3xl">
-          {/* {imgArray.map((number, key) => {
-            return (
+          {imgArray.map((value, key) => (
+            <>
+              <>{foodData.MANUAL_IMG + { value }}</>
               <img
-                src={foodData}
+                src={foodData.MANUAL_IMG + { value }}
                 className=" w-36 mx-4 h-auto my-3"
                 key={key}
               />
-            );
-          })} */}
+            </>
+          ))}
         </div>
       </div>
       <div className="mt-12 w-4/6 mx-auto h-auto bg-slate-100 font-bold text-xl rounded-3xl flex flex-col">
