@@ -44,8 +44,6 @@ const Detail = () => {
   ];
 
   const DetailRecipe = () => {
-    let [aa, setAaa] = useState(data.COOKRCP01.row[0]);
-    console.log(aa.MANUAL01);
     return (
       <div className="w-full mx-auto h-auto bg-white font-bold text-xl flex flex-col relative p-5 rounded-br-3xl rounded-bl-3xl">
         <div className="font-semibold text-lg pb-6">조리법</div>
@@ -99,11 +97,11 @@ const Detail = () => {
 
   const DetailPicture = () => {
     return (
-      <div className=" w-4/6 mx-auto bg-white rounded-3xl">
+      <div className=" w-4/6 mx-auto bg-white rounded-br-3xl rounded-bl-3xl">
         <div className="w-full">
           <img
             src={data.COOKRCP01.row[1].ATT_FILE_NO_MAIN}
-            className="mx-auto mt-10 rounded-3xl"
+            className="mx-auto mt-10 rounded-3xl w-1/2"
           ></img>
         </div>
         <div className="pt-10 pb-6 font-bold text-xl pl-7">
