@@ -3,13 +3,14 @@ import { Routes } from 'react-router';
 import Footer from './components/common/Footer';
 import Header from './components/common/Header';
 import Main from './components/Main';
+import Detail from './Detail';
 
 function App() {
   return (
     <div className="App">
-      <Header/>
-      <Main/>
-      <Footer/>
+      <Header />
+      <Detail />
+      <Footer />
     </div>
   );
 }
